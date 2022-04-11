@@ -1,0 +1,86 @@
+module Unidade_controle(
+								
+	input [4:0]Instr,
+
+	output [4:0]ControleUla,
+	output [1:0]SinalMux,
+	output SinalEscritaMem,SinalEscritaReg,
+	output Sdadoext, Smuxula, Sdesv
+);
+	always@*
+		
+	case(Inst)
+	
+	5'b00000: begin
+		Smuxula = 1'b1;
+		ControleUla = Instru;
+		SinalMux = 2'b01;
+		Sdesv = 1'b1;
+	end	// ADD
+	
+	5'b00001: begin
+		Smuxula = 1'b0;
+		ControleUla = Instru;
+		SinalMux = 2'b01;
+		Sdesv = 1'b1;
+	end	// ADD // ADDI
+	
+	5'b00010: select = A - B; // SUB
+	
+	5'b00011: select = A - B; // SUBI
+	
+	5'b00100: select = A * B; // MUL
+	
+	5'b00101: select = A / B; // DIV
+
+	5'b00110: select = A & B; // AND
+	
+	5'b00111: select = A & B; // ANDI
+	
+	5'b01000: select = A | B; // OR 
+	
+	5'b01001: select = A | B; // ORI
+	
+	5'b01010: select = ~A; // NOT
+
+	5'b01011: select = A < B  ? 32'd1 : 32'd0;  // SLT
+
+	5'b01100: select = A >> C; // SR
+	
+	5'b01101: select = A << C; // SL
+
+	5'b01110: select = A << C; // jump
+	
+	5'b01111: select = A << C; // jumpI
+	
+	5'b10000: select = A << C; // JAL
+	
+	5'b10001: select = A == B ? 32'd1 : 32'd0;  //BEQ
+	
+	5'b10010: select = A != B ? 32'd1 : 32'd0;  //BNE	
+	
+	5'b10011: select = A; // LOAD
+	
+	5'b10100: select = A; // LOADI
+	
+	5'b10101: select = A; // STORE
+	
+	5'b10110: select = A; // MOV 
+	
+	5'b10111: select = A; // IN 
+	
+	5'b11000: select = A; // OUT
+	
+	5'b11001: select = A; // Nop
+	
+	5'b11010: select = A; // Hlt
+	
+	
+
+	default: Inst = 5'b11001;
+	endcase
+	
+	
+
+
+endmodule

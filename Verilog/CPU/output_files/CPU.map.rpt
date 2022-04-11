@@ -1,0 +1,1674 @@
+Analysis & Synthesis report for CPU
+Tue Aug 17 17:09:45 2021
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Parameter Settings for User Entity Instance: datapath:data|ULA:ula
+ 12. Parameter Settings for User Entity Instance: datapath:data|Mem_dados:md
+ 13. Parameter Settings for User Entity Instance: datapath:data|Mem_instr:minst
+ 14. Port Connectivity Checks: "datapath:data|Muxout:muxot"
+ 15. Port Connectivity Checks: "datapath:data|Mem_dados:md"
+ 16. Port Connectivity Checks: "datapath:data|ULA:ula"
+ 17. Port Connectivity Checks: "datapath:data"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Aug 17 17:09:45 2021       ;
+; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                      ; CPU                                         ;
+; Top-level Entity Name              ; CPU                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 40                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; CPU                ; CPU                ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                               ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                 ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------+---------+
+; CPU.v                            ; yes             ; User Verilog HDL File  ; /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v          ;         ;
+; instrucoes.txt                   ; yes             ; Auto-Found File        ; /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/instrucoes.txt ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+;                                             ;       ;
+; Total combinational functions               ; 0     ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- <=2 input functions                  ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+;     -- Dedicated logic registers            ; 0     ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 40    ;
+;                                             ;       ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 40    ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; |CPU                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 40   ; 0            ; |CPU                ; CPU         ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                            ;
++-------------------------------------------------+---------------------------------------------+
+; Register name                                   ; Reason for Removal                          ;
++-------------------------------------------------+---------------------------------------------+
+; datapath:data|Registradores:Regis|regs[0][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[0][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[1][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[2][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[3][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[4][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[5][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[6][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[7][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[8][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][0]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][1]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][2]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][3]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][4]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][5]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][6]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][7]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][8]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][9]    ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][10]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][11]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][12]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][13]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][14]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][15]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][16]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][17]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][18]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][19]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][20]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][21]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][22]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][23]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][24]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][25]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][26]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][27]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][28]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][29]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][30]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[9][31]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[10][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[11][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[12][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[13][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[14][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[15][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[16][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[17][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[18][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[19][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[20][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[21][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[22][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[23][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[24][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[25][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[26][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[27][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[28][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[29][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[30][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][0]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][1]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][2]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][3]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][4]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][5]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][6]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][7]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][8]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][9]   ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][10]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][11]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][12]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][13]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][14]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][15]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][16]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][17]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][18]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][19]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][20]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][21]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][22]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][23]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][24]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][25]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][26]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][27]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][28]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][29]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][30]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Registradores:Regis|regs[31][31]  ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Mem_dados:md|ram[10][0]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Registradores:Regis|regs[0][0]    ; Lost fanout                                 ;
+; datapath:data|Mem_dados:md|ram[10][1]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][2]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][3]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][4]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][5]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][6]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][7]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][8]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][9]           ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][10]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][11]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][12]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][13]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][14]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][15]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][16]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][17]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][18]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][19]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][20]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][21]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][22]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][23]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][24]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][25]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][26]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][27]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][28]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][29]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][30]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_dados:md|ram[10][31]          ; Stuck at GND due to stuck port clock_enable ;
+; datapath:data|Mem_instr:minst|q[22..26]         ; Lost fanout                                 ;
+; datapath:data|Mem_dados:md|x[0..31]             ; Stuck at GND due to stuck port data_in      ;
+; datapath:data|Program_counter:Pc|addrout[0..31] ; Lost fanout                                 ;
+; datapath:data|Mem_instr:minst|q[0..21,27..31]   ; Lost fanout                                 ;
+; Total Number of Removed Registers = 1152        ;                                             ;
++-------------------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                  ;
++-----------------------------------------------+--------------------------------+-----------------------------------------------------------------------------+
+; Register name                                 ; Reason for Removal             ; Registers Removed due to This Register                                      ;
++-----------------------------------------------+--------------------------------+-----------------------------------------------------------------------------+
+; datapath:data|Registradores:Regis|regs[0][1]  ; Stuck at GND                   ; datapath:data|Mem_dados:md|ram[10][0], datapath:data|Mem_instr:minst|q[26], ;
+;                                               ; due to stuck port data_in      ; datapath:data|Mem_instr:minst|q[25], datapath:data|Mem_instr:minst|q[24],   ;
+;                                               ;                                ; datapath:data|Mem_instr:minst|q[23], datapath:data|Mem_instr:minst|q[22],   ;
+;                                               ;                                ; datapath:data|Mem_dados:md|x[0], datapath:data|Mem_instr:minst|q[1],        ;
+;                                               ;                                ; datapath:data|Mem_instr:minst|q[12], datapath:data|Mem_instr:minst|q[13],   ;
+;                                               ;                                ; datapath:data|Mem_instr:minst|q[14], datapath:data|Mem_instr:minst|q[15],   ;
+;                                               ;                                ; datapath:data|Mem_instr:minst|q[16], datapath:data|Mem_instr:minst|q[17],   ;
+;                                               ;                                ; datapath:data|Mem_instr:minst|q[18], datapath:data|Mem_instr:minst|q[19],   ;
+;                                               ;                                ; datapath:data|Mem_instr:minst|q[20], datapath:data|Mem_instr:minst|q[21]    ;
+; datapath:data|Mem_dados:md|ram[10][21]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[21]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][12]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[12]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][13]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[13]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][14]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[14]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][15]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[15]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][16]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[16]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][17]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[17]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][18]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[18]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][19]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[19]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][20]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[20]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][10]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[10]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][22]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[22]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][23]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[23]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][24]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[24]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][25]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[25]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][26]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[26]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][27]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[27]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][28]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[28]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][29]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[29]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][30]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[30]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][31]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[31]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[1][0]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[0]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][2]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[2]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][3]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[3]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][4]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[4]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][5]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[5]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][6]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[6]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][7]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[7]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][8]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[8]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][9]  ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[9]                                          ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][10] ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[10]                                         ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Registradores:Regis|regs[0][11] ; Stuck at GND                   ; datapath:data|Mem_instr:minst|q[11]                                         ;
+;                                               ; due to stuck port data_in      ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][11]        ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[11]                                            ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][1]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[1]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][2]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[2]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][3]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[3]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][4]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[4]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][5]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[5]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][6]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[6]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][7]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[7]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][8]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[8]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
+; datapath:data|Mem_dados:md|ram[10][9]         ; Stuck at GND                   ; datapath:data|Mem_dados:md|x[9]                                             ;
+;                                               ; due to stuck port clock_enable ;                                                                             ;
++-----------------------------------------------+--------------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:data|ULA:ula ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; C              ; 1     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:data|Mem_dados:md ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                 ;
+; ADDR_WIDTH     ; 32    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:data|Mem_instr:minst ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                    ;
+; ADDR_WIDTH     ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:data|Muxout:muxot"                                                                                                                    ;
++---------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                                     ;
++---------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
+; B       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "B[31..1]" will be connected to GND. ;
+; Resul   ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "Resul[31..1]" have no fanouts                  ;
+; Resul   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                         ;
+; isFalse ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                         ;
++---------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:data|Mem_dados:md"                                                                                                                                ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                                              ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "data[31..1]" will be connected to GND.       ;
+; read_addr  ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "read_addr[31..5]" will be connected to GND.  ;
+; write_addr ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "write_addr[31..5]" will be connected to GND. ;
+; q          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                  ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:data|ULA:ula"                                                                                                        ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                    ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; Resul   ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "Resul[31..1]" have no fanouts ;
+; isFalse ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:data"                                                                               ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Instru[26..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 40                          ;
+; cycloneiii_lcell_comb ; 2                           ;
+;     normal            ; 2                           ;
+;         0 data inputs ; 2                           ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Tue Aug 17 17:09:28 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 17 design units, including 17 entities, in source file CPU.v
+    Info (12023): Found entity 1: Program_counter File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 1
+    Info (12023): Found entity 2: MultiplexULA File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 12
+    Info (12023): Found entity 3: MuxPC File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 24
+    Info (12023): Found entity 4: MuxExte File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 36
+    Info (12023): Found entity 5: Mux_Desv File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 48
+    Info (12023): Found entity 6: Muxout File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 60
+    Info (12023): Found entity 7: ExtensorBit File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 92
+    Info (12023): Found entity 8: Extensor_bitsB File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 106
+    Info (12023): Found entity 9: Somadordesv File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 120
+    Info (12023): Found entity 10: Somador_Padrao File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 132
+    Info (12023): Found entity 11: ULA File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 142
+    Info (12023): Found entity 12: Registradores File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 197
+    Info (12023): Found entity 13: Mem_instr File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 219
+    Info (12023): Found entity 14: Mem_dados File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 242
+    Info (12023): Found entity 15: datapath File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 271
+    Info (12023): Found entity 16: CPU File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 305
+    Info (12023): Found entity 17: Unidade_controle File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 333
+Warning (10236): Verilog HDL Implicit Net warning at CPU.v(288): created implicit net for "ResulULA" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 288
+Warning (10236): Verilog HDL Implicit Net warning at CPU.v(289): created implicit net for "SinalEscrita" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 289
+Warning (10236): Verilog HDL Implicit Net warning at CPU.v(297): created implicit net for "Resul" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 297
+Warning (10236): Verilog HDL Implicit Net warning at CPU.v(317): created implicit net for "Sdes" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 317
+Info (12127): Elaborating entity "CPU" for the top level hierarchy
+Warning (10034): Output port "out" at CPU.v(310) has no driver File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 310
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:data" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 317
+Info (12128): Elaborating entity "ULA" for hierarchy "datapath:data|ULA:ula" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 288
+Info (12128): Elaborating entity "Mem_dados" for hierarchy "datapath:data|Mem_dados:md" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 289
+Info (12128): Elaborating entity "Registradores" for hierarchy "datapath:data|Registradores:Regis" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 290
+Info (12128): Elaborating entity "Mem_instr" for hierarchy "datapath:data|Mem_instr:minst" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 291
+Warning (10259): Verilog HDL error at CPU.v(228): constant value overflow File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 228
+Warning (10030): Net "rom.data_a" at CPU.v(228) has no driver or initial value, using a default initial value '0' File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 228
+Warning (10030): Net "rom.waddr_a[0]" at CPU.v(228) has no driver or initial value, using a default initial value '0' File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 228
+Warning (10030): Net "rom.we_a" at CPU.v(228) has no driver or initial value, using a default initial value '0' File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 228
+Info (12128): Elaborating entity "Extensor_bitsB" for hierarchy "datapath:data|Extensor_bitsB:dezesseis" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 292
+Info (12128): Elaborating entity "ExtensorBit" for hierarchy "datapath:data|ExtensorBit:vinteum" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 293
+Info (12128): Elaborating entity "MuxExte" for hierarchy "datapath:data|MuxExte:exteout" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 294
+Info (12128): Elaborating entity "MultiplexULA" for hierarchy "datapath:data|MultiplexULA:muxULA" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 295
+Info (12128): Elaborating entity "Mux_Desv" for hierarchy "datapath:data|Mux_Desv:mudev" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 296
+Info (12128): Elaborating entity "Muxout" for hierarchy "datapath:data|Muxout:muxot" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 297
+Info (12128): Elaborating entity "MuxPC" for hierarchy "datapath:data|MuxPC:mupc" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 298
+Info (12128): Elaborating entity "Program_counter" for hierarchy "datapath:data|Program_counter:Pc" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 299
+Info (12128): Elaborating entity "Somador_Padrao" for hierarchy "datapath:data|Somador_Padrao:SumP" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 300
+Info (12128): Elaborating entity "Somadordesv" for hierarchy "datapath:data|Somadordesv:Sumdesv" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 301
+Info (12128): Elaborating entity "Unidade_controle" for hierarchy "Unidade_controle:UC" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 319
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "NotFound", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "ControleUla", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "SinalMux", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "SelPC", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "regSinalEscritaMem", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "Smuxula", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "Sdadoext", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "SinalEscritaReg", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(345): inferring latch(es) for variable "Sdesv", which holds its previous value in one or more paths through the always construct File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "Sdesv" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "SinalEscritaReg" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "Sdadoext" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "Smuxula" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "regSinalEscritaMem" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "SelPC" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "SinalMux[0]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "SinalMux[1]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "ControleUla[0]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "ControleUla[1]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "ControleUla[2]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "ControleUla[3]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "ControleUla[4]" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Info (10041): Inferred latch for "NotFound" at CPU.v(345) File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 345
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "datapath:data|outmuxMD[31]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[30]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[29]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[28]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[27]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[26]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[25]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[24]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[23]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[22]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[21]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[20]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[19]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[18]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[17]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[16]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[15]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[14]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[13]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[12]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[11]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[10]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[9]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[8]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[7]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[6]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[5]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[4]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[3]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[2]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[1]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+    Warning (12110): Net "datapath:data|outmuxMD[0]" is missing source, defaulting to GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 281
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "saida[0]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[1]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[2]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[3]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[4]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[5]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[6]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[7]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[8]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[9]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[10]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[11]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[12]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[13]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[14]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[15]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[16]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[17]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[18]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[19]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[20]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[21]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[22]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[23]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[24]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[25]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[26]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[27]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[28]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[29]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[30]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "saida[31]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 308
+    Warning (13410): Pin "NotF" is stuck at VCC File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 309
+    Warning (13410): Pin "out[0]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 310
+    Warning (13410): Pin "out[1]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 310
+    Warning (13410): Pin "out[2]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 310
+    Warning (13410): Pin "out[3]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 310
+    Warning (13410): Pin "out[4]" is stuck at GND File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 310
+Info (17049): 65 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 307
+    Warning (15610): No output dependent on input pin "resetPC" File: /home/leoenne/Documentos/LAB_Comp/Verilog/CPU/CPU.v Line: 307
+Info (21057): Implemented 40 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 38 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 95 warnings
+    Info: Peak virtual memory: 904 megabytes
+    Info: Processing ended: Tue Aug 17 17:09:45 2021
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:39
+
+

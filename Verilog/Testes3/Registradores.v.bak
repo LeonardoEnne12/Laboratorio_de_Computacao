@@ -1,0 +1,20 @@
+module Registradores (adre_L1,adre_L2,adre_E,clk,,Wregs,Dados_E,rd1,rd2,rd3);
+	input [4:0]adre_L1,adre_L2,adre_E;
+	input [31:0]wd3;
+	input clk,Wregs;
+	input Dados_E;
+	output [31:0]rd1,rd2,rd3;
+	
+	reg [31:0] regs[31:0];
+	
+	always@(posedge clk)begin
+		if (Wregs) begin
+			regs[adre_E] <= Dados_E;			//Sequencial
+		end
+	end
+		
+	assign rd1 = regs[adre_E];	
+	assign rd2 = regs[adre_L1];
+	assign rd3 = regs[adre_L1];	
+
+endmodule 

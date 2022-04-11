@@ -1,0 +1,17 @@
+module Multiplex1(IM2, IM5, S, Y, Z);
+
+	input [16:0] IM2; // IM formato 2
+	input [21:0] IM5; // IM formato 5
+	
+	// Controle
+	input S; // Sinal de controle vindo da UC
+	
+	output [21:0] Y; 
+	output [16:0] Z; 
+	
+	if (S == 1'b1) Y = A; 
+		
+		
+	
+	else Y = B;
+endmodule

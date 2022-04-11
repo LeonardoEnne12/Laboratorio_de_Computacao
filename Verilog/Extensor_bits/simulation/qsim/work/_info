@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/leoenne/Documentos/LAB_Comp/Verilog/Extensor_bits/simulation/qsim
+vExtensorBit
+!s110 1627564873
+!i10b 1
+!s100 e3C^j6HTGL[@O`b@FeDV40
+IFEFfgWl[>lfmXTH3ifJCX1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1627564873
+8ExtensorBit.vo
+FExtensorBit.vo
+L0 32
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z3 !s108 1627564873.000000
+!s107 ExtensorBit.vo|
+!s90 -work|work|ExtensorBit.vo|
+!i113 1
+Z4 o-work work
+Z5 tCvgOpt 0
+n@extensor@bit
+vExtensorBit_vlg_vec_tst
+!s110 1627564874
+!i10b 1
+!s100 HQPE;;Yo90Kk2EN4BWJ^C2
+INS57`AkUEOYCPm;DQKB;k3
+R1
+R0
+w1627564871
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 30
+R2
+r1
+!s85 0
+31
+R3
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R4
+R5
+n@extensor@bit_vlg_vec_tst

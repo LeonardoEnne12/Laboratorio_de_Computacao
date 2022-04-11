@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/leoenne/Documentos/LAB_Comp/Verilog/Multiplex1/simulation/qsim
+vMultiplex1
+Z1 !s110 1633961317
+!i10b 1
+!s100 :a`VOFK?30ZfT:hUb8AnU2
+IJ6XI>@S1NK71fdE51kSeG3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1633961312
+8Multiplex1.vo
+FMultiplex1.vo
+L0 32
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1633961316.000000
+!s107 Multiplex1.vo|
+!s90 -work|work|Multiplex1.vo|
+!i113 1
+Z4 o-work work
+Z5 tCvgOpt 0
+n@multiplex1
+vMultiplex1_vlg_vec_tst
+R1
+!i10b 1
+!s100 n0[2[czYCgQn;NLa6ndM21
+I?`7bM4[4<6CJJ40=72N6_0
+R2
+R0
+w1633961310
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 30
+R3
+r1
+!s85 0
+31
+!s108 1633961317.000000
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R4
+R5
+n@multiplex1_vlg_vec_tst

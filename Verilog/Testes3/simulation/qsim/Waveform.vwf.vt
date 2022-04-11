@@ -1,0 +1,316 @@
+// Copyright (C) 2019  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details, at
+// https://fpgasoftware.intel.com/eula.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "07/29/2021 12:19:43"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          Registradores
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module Registradores_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [4:0] R1;
+reg [4:0] R2;
+reg [4:0] RD;
+reg clock;
+reg [31:0] dadosEscrita;
+reg regWrite;
+// wires                                               
+wire [31:0] leituraR1;
+wire [31:0] leituraR2;
+
+// assign statements (if any)                          
+Registradores i1 (
+// port map - connection between master ports and signals/registers   
+	.R1(R1),
+	.R2(R2),
+	.RD(RD),
+	.clock(clock),
+	.dadosEscrita(dadosEscrita),
+	.leituraR1(leituraR1),
+	.leituraR2(leituraR2),
+	.regWrite(regWrite)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+// R1[ 4 ]
+initial
+begin
+	R1[4] = 1'b0;
+end 
+// R1[ 3 ]
+initial
+begin
+	R1[3] = 1'b1;
+end 
+// R1[ 2 ]
+initial
+begin
+	R1[2] = 1'b0;
+end 
+// R1[ 1 ]
+initial
+begin
+	R1[1] = 1'b1;
+end 
+// R1[ 0 ]
+initial
+begin
+	R1[0] = 1'b0;
+	R1[0] = #960000 1'b1;
+end 
+// R2[ 4 ]
+initial
+begin
+	R2[4] = 1'b0;
+end 
+// R2[ 3 ]
+initial
+begin
+	R2[3] = 1'b0;
+end 
+// R2[ 2 ]
+initial
+begin
+	R2[2] = 1'b0;
+end 
+// R2[ 1 ]
+initial
+begin
+	R2[1] = 1'b0;
+end 
+// R2[ 0 ]
+initial
+begin
+	R2[0] = 1'b0;
+end 
+// RD[ 4 ]
+initial
+begin
+	RD[4] = 1'b0;
+end 
+// RD[ 3 ]
+initial
+begin
+	RD[3] = 1'b1;
+end 
+// RD[ 2 ]
+initial
+begin
+	RD[2] = 1'b0;
+end 
+// RD[ 1 ]
+initial
+begin
+	RD[1] = 1'b1;
+end 
+// RD[ 0 ]
+initial
+begin
+	RD[0] = 1'b0;
+	RD[0] = #960000 1'b1;
+end 
+
+// clock
+initial
+begin
+	repeat(2)
+	begin
+		clock = 1'b0;
+		clock = #240000 1'b1;
+		# 240000;
+	end
+	clock = 1'b0;
+end 
+// dadosEscrita[ 31 ]
+initial
+begin
+	dadosEscrita[31] = 1'b0;
+end 
+// dadosEscrita[ 30 ]
+initial
+begin
+	dadosEscrita[30] = 1'b0;
+end 
+// dadosEscrita[ 29 ]
+initial
+begin
+	dadosEscrita[29] = 1'b0;
+end 
+// dadosEscrita[ 28 ]
+initial
+begin
+	dadosEscrita[28] = 1'b0;
+end 
+// dadosEscrita[ 27 ]
+initial
+begin
+	dadosEscrita[27] = 1'b0;
+end 
+// dadosEscrita[ 26 ]
+initial
+begin
+	dadosEscrita[26] = 1'b0;
+end 
+// dadosEscrita[ 25 ]
+initial
+begin
+	dadosEscrita[25] = 1'b0;
+end 
+// dadosEscrita[ 24 ]
+initial
+begin
+	dadosEscrita[24] = 1'b0;
+end 
+// dadosEscrita[ 23 ]
+initial
+begin
+	dadosEscrita[23] = 1'b0;
+end 
+// dadosEscrita[ 22 ]
+initial
+begin
+	dadosEscrita[22] = 1'b0;
+end 
+// dadosEscrita[ 21 ]
+initial
+begin
+	dadosEscrita[21] = 1'b0;
+end 
+// dadosEscrita[ 20 ]
+initial
+begin
+	dadosEscrita[20] = 1'b0;
+end 
+// dadosEscrita[ 19 ]
+initial
+begin
+	dadosEscrita[19] = 1'b0;
+end 
+// dadosEscrita[ 18 ]
+initial
+begin
+	dadosEscrita[18] = 1'b0;
+end 
+// dadosEscrita[ 17 ]
+initial
+begin
+	dadosEscrita[17] = 1'b0;
+end 
+// dadosEscrita[ 16 ]
+initial
+begin
+	dadosEscrita[16] = 1'b0;
+end 
+// dadosEscrita[ 15 ]
+initial
+begin
+	dadosEscrita[15] = 1'b0;
+end 
+// dadosEscrita[ 14 ]
+initial
+begin
+	dadosEscrita[14] = 1'b0;
+end 
+// dadosEscrita[ 13 ]
+initial
+begin
+	dadosEscrita[13] = 1'b0;
+end 
+// dadosEscrita[ 12 ]
+initial
+begin
+	dadosEscrita[12] = 1'b0;
+end 
+// dadosEscrita[ 11 ]
+initial
+begin
+	dadosEscrita[11] = 1'b0;
+end 
+// dadosEscrita[ 10 ]
+initial
+begin
+	dadosEscrita[10] = 1'b0;
+end 
+// dadosEscrita[ 9 ]
+initial
+begin
+	dadosEscrita[9] = 1'b0;
+end 
+// dadosEscrita[ 8 ]
+initial
+begin
+	dadosEscrita[8] = 1'b0;
+end 
+// dadosEscrita[ 7 ]
+initial
+begin
+	dadosEscrita[7] = 1'b0;
+end 
+// dadosEscrita[ 6 ]
+initial
+begin
+	dadosEscrita[6] = 1'b1;
+end 
+// dadosEscrita[ 5 ]
+initial
+begin
+	dadosEscrita[5] = 1'b1;
+end 
+// dadosEscrita[ 4 ]
+initial
+begin
+	dadosEscrita[4] = 1'b1;
+end 
+// dadosEscrita[ 3 ]
+initial
+begin
+	dadosEscrita[3] = 1'b0;
+end 
+// dadosEscrita[ 2 ]
+initial
+begin
+	dadosEscrita[2] = 1'b0;
+end 
+// dadosEscrita[ 1 ]
+initial
+begin
+	dadosEscrita[1] = 1'b0;
+end 
+// dadosEscrita[ 0 ]
+initial
+begin
+	dadosEscrita[0] = 1'b0;
+	dadosEscrita[0] = #960000 1'b1;
+end 
+
+// regWrite
+initial
+begin
+	regWrite = 1'b1;
+end 
+endmodule
+

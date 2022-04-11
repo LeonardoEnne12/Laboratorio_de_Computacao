@@ -1,0 +1,8 @@
+module somador_pc(pc, branch, regAddr, jump, addOp, pcAtual);
+	// Entradas
+	input [25:0] pc;								// Endereco do contador de programa atual
+	
+	output [25:0] pcAtual;						// Endereco do contador de programa do proximo ciclo
+	
+	assign pcAtual = pc + 26'd1;;
+endmodule
