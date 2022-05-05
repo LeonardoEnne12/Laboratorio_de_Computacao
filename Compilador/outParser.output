@@ -1,0 +1,39 @@
+Tipo inteiro
+	Funcao gcd
+		Tipo inteiro
+			Variavel u
+		Tipo inteiro
+			Variavel v
+		If
+			Operacao: Simbolo: ==
+				Id: v
+				Constante: 0
+			Return
+				Id: u
+			Return
+				Chamada de Funcao gcd 
+					Id: v
+					Operacao: Simbolo: -
+						Id: u
+						Operacao: Simbolo: *
+							Operacao: Simbolo: /
+								Id: u
+								Id: v
+							Id: v
+	Tipo void
+		Funcao main
+			Tipo void
+			Tipo inteiro
+				Variavel x
+			Tipo inteiro
+				Variavel y
+			Atribuicao
+				Id: x
+				Constante: 100
+			Atribuicao
+				Id: y
+				Constante: 25
+			Chamada de Funcao output 
+				Chamada de Funcao gcd 
+					Id: x
+					Id: y

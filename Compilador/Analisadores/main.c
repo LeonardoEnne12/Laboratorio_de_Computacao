@@ -48,11 +48,18 @@ int main(){
 
     printf("\nConstruindo Tabela de Simbolos...\n");
     bool Err = buildSymtab(syntaxTree);
+    
     printf("\nChecando tipos...\n");
     bool Err2 = typeCheck(syntaxTree);
 
     fclose(source);
-    fclose(f_out);
+    if(Err == TRUE || Err2 == TRUE)
+    {
+    	fclose(f_out);
+    	f_out = fopen("outParser.output","w");
+    	fclose(f_out);
+    }
+    else fclose(f_out);
 
     return 0;
 }
