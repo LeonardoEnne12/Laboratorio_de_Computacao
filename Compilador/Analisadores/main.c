@@ -2,6 +2,7 @@
 #include "util.h"
 #include "parse.h"
 #include "analyze.h"
+#include <stdio.h>
 
 extern FILE *yyin;
 int Error = FALSE;
@@ -18,8 +19,18 @@ int main(){
     FILE *f_out = fopen("outParser.output","w+");
 
     TreeNode * syntaxTree;
+     
+    char path[100];
+    int flag;
+    
+    printf("Caminho para o .txt que vai ser utilizado: ");
+        
+    flag = scanf("%s",path);
 
-    source = fopen("entrada2.txt", "r");
+    if(flag){
+    	printf("\nCaminho escrito!\n");
+    }
+    source = fopen(path, "r");
 
     yyin = source;
 
@@ -36,9 +47,9 @@ int main(){
     printTree(syntaxTree,f_out);
 
     printf("\nConstruindo Tabela de Simbolos...\n");
-    buildSymtab(syntaxTree);
+    bool Err = buildSymtab(syntaxTree);
     printf("\nChecando tipos...\n");
-    typeCheck(syntaxTree);
+    bool Err2 = typeCheck(syntaxTree);
 
     fclose(source);
     fclose(f_out);

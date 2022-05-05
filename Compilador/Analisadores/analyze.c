@@ -1,6 +1,7 @@
 #include "globals.h"
 #include "symtab.h"
 #include "analyze.h"
+#include<stdbool.h>
 
 
 static void typeError(TreeNode * t, char * message){ //Escreve o erro no console
@@ -53,8 +54,17 @@ static void insertNode( TreeNode * t){ //funcao para insercao na tabela de simbo
         case statementX:
             switch (t->kind.stmt){       
                 case variableX:
-                    if (st_lookup(t->attr.name, t->attr.scope) == -1 && st_lookup(t->attr.name, "global") == -1) //variavel nao esta na tabela
-                        st_insert(t->attr.name,t->lineno,location++, t->attr.scope, "variavel", "inteiro", 0); //nova def de variavel
+                    if (st_lookup(t->attr.name, t->attr.scope) == -1 && st_lookup(t->attr.name, "global") == -1){
+              
+                   	if ( t->type == voidX)
+                   	{
+                   	typeError(t,"Declaração de variável inválida(void)");
+                   	}
+                   	
+                   	else{
+               	st_insert(t->attr.name,t->lineno,location++, t->attr.scope, "variavel", "inteiro", 0); //nova def de variavel
+                    	}
+                    } //variavel nao esta na tabela
                     else
                         typeError(t, "Variavel ja declarada."); 
                     break;
@@ -121,7 +131,7 @@ static void insertNode( TreeNode * t){ //funcao para insercao na tabela de simbo
     }
 }
 
-void buildSymtab(TreeNode * syntaxTree){    //cria tabela de simbolos
+bool buildSymtab(TreeNode * syntaxTree){    //cria tabela de simbolos
     traverse(syntaxTree, insertNode, nullProc); 
     if(st_lookup("main", "global") == -1)
     {
@@ -130,6 +140,8 @@ void buildSymtab(TreeNode * syntaxTree){    //cria tabela de simbolos
     }
 
     printSymTab();
+    
+    return Error;
 }
 
 static void checkNode(TreeNode * t){ // checa os tipos
@@ -163,7 +175,8 @@ static void checkNode(TreeNode * t){ // checa os tipos
                             typeError(t->child[1],"Atribuicao invalida de dado");
                     }
                     break;
-                    
+               
+
                 case callX:
                     //erro input com parametro
                     if(strcmp(t -> attr.name, "input") == 0 && st_lookup_paramQt(t->attr.name, t->attr.scope) != 0){
@@ -188,6 +201,7 @@ static void checkNode(TreeNode * t){ // checa os tipos
     }
 }
 
-void typeCheck(TreeNode * syntaxTree){ // Checa os tipos na arvore de sintaxe
+bool typeCheck(TreeNode * syntaxTree){ // Checa os tipos na arvore de sintaxe
     traverse(syntaxTree, nullProc, checkNode);
+    return Error;
 }
