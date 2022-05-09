@@ -7,4 +7,4 @@ gcc -Wall -g -o Exec *.o -ly -O2
 
 
 Caminho txt de testes:
-/home/leoenne/Documentos/LAB_Comp/Compilador/entrada.txt
+/home/leoenne/Documentos/LAB_Comp/Compilador/entrada2.txt

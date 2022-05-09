@@ -20,20 +20,30 @@ Tipo inteiro
 								Id: u
 								Id: v
 							Id: v
-	Tipo void
-		Funcao main
+	Tipo inteiro
+		Funcao teste
 			Tipo void
 			Tipo inteiro
-				Variavel x
-			Tipo inteiro
-				Variavel y
-			Atribuicao
-				Id: x
-				Constante: 100
-			Atribuicao
-				Id: y
-				Constante: 25
-			Chamada de Funcao output 
-				Chamada de Funcao gcd 
-					Id: x
-					Id: y
+				Variavel h
+		Tipo inteiro
+			Funcao testepar
+				Tipo void
+				Tipo inteiro
+					Variavel h
+			Tipo void
+				Funcao main
+					Tipo void
+					Tipo inteiro
+						Variavel x
+					Tipo inteiro
+						Variavel y
+					Atribuicao
+						Id: x
+						Constante: 100
+					Atribuicao
+						Id: y
+						Constante: 25
+					Chamada de Funcao output 
+						Chamada de Funcao gcd 
+							Id: x
+							Id: y

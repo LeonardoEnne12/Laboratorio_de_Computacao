@@ -7,6 +7,16 @@ int gcd (int u, int v)
     /* u-u/v*v == u mod v */
 }
 
+int teste (void)
+{
+	int h;
+}
+
+int testepar (void)
+{
+	int h;
+}
+
 void main(void)
 {   int x; int y;
     /*void z;*/
