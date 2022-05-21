@@ -29,9 +29,9 @@ QUEBRA \n
 "while" return WHILE;
 
 "+" return SOM;
-"-" return SUB;
-"*" return MUL;
-"/" return DIV;
+"-" return SUBT;
+"*" return MULT;
+"/" return DIVI;
 "<" return MEN;
 "<=" return MENE;
 ">" return MAI;
@@ -81,7 +81,7 @@ QUEBRA \n
 
 %%
 
-TokenType getToken(){ //pega os tokens
+TokenType getToken(){ // Pega os tokens
 	int token;
 	
 	token = yylex();
@@ -89,7 +89,7 @@ TokenType getToken(){ //pega os tokens
 	return token;
 }
 
-void Scanner(){ //funcao scanner
+void Scanner(){ // Funcao scanner para gerar arquivo com tokens
     int token;
     FILE *f_out = fopen("outScanner.output","w+");
 	do{
@@ -122,14 +122,14 @@ void Scanner(){ //funcao scanner
             case SOM:
                 fprintf(f_out, "SOM ");
                 break;
-            case SUB:
-                fprintf(f_out, "SUB ");
+            case SUBT:
+                fprintf(f_out, "SUBT ");
                 break;
-            case MUL:
-                fprintf(f_out, "MUL ");
+            case MULT:
+                fprintf(f_out, "MULT ");
                 break;
-            case DIV:
-                fprintf(f_out, "DIV ");
+            case DIVI:
+                fprintf(f_out, "DIVI ");
                 break;
             case MEN:
                 fprintf(f_out, "MEN ");
@@ -181,11 +181,13 @@ void Scanner(){ //funcao scanner
                 break;
             case ERRO:
                 fprintf(f_out, "ERRO ");
-                printf("ERRO LEXICO: %s LINHA: %d\n", yytext, numlinha);//ERRO geral
+                printf("ERRO LEXICO: %s LINHA: %d\n", yytext, numlinha); // ERRO Geral
+                Error = TRUE;
                 break;
             case ERRO2:
-                printf("ERRO LEXICO: */ LINHA: %d\n", numlinha);//ERRO caso especifico comentario
+                printf("ERRO LEXICO: */ LINHA: %d\n", numlinha); // ERRO Caso específico: não encontra o fecha comentário
                 break;
+                Error = TRUE;
             default: break;
         }
     }while(token != ENDF);

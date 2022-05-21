@@ -23,40 +23,30 @@
 #define TRUE 1
 #endif
 
-//num palavres reservadas
-#define MAXRESERVED 6
+#define MAXRESERVED 6 // Num palavras reservadas
 
-extern int numlinha; // var auxiliar com a linha atual
-extern int iniciolinha; // scanner var
+extern int numlinha; // Variavel auxiliar com a linha atual
+extern int iniciolinha; // Variavel auxiliar do scanner para verificacao de comentarios
 
 int getToken();
 
+// Definicoes
 typedef int TokenType;
 
-//definicoes
-
-typedef enum
-{
+typedef enum{
 	statementX, expressionX 
-
 } NodeKind;
 
-typedef enum
-{
-	ifX, whileX, assignX, variableX, functionX, callX, returnX, numberX
-
+typedef enum{
+	ifX, whileX, assignX, variableX, functionX, callX, returnX, paramX
 } StatementKind;
 
-typedef enum
-{
-	operationX, constantX, idX, vectorX, vectorIdX, typeX
+typedef enum{
+	operationX, constantX, idX, vectorX, typeX
 } ExpressionIdentifier;
 
-typedef enum
-{
-
-	voidX, integerX, booleanX
-	
+typedef enum{
+	voidX, integerX, arrayX, booleanX // 0,1,2,3
 } ExpressionType;
 
 #define MAXCHILDREN 3
@@ -80,7 +70,7 @@ typedef struct treeNode{
       char* scope;	
    } attr;
 
-     ExpressionType type;
+   ExpressionType type;
 } TreeNode;
 
 extern int Error; 

@@ -1,49 +1,46 @@
-Tipo inteiro
-	Funcao gcd
-		Tipo inteiro
-			Variavel u
-		Tipo inteiro
-			Variavel v
-		If
-			Operacao: Simbolo: ==
-				Id: v
-				Constante: 0
-			Return
-				Id: u
-			Return
-				Chamada de Funcao gcd 
-					Id: v
-					Operacao: Simbolo: -
-						Id: u
-						Operacao: Simbolo: *
-							Operacao: Simbolo: /
-								Id: u
-								Id: v
-							Id: v
-	Tipo inteiro
-		Funcao teste
-			Tipo void
-			Tipo inteiro
-				Variavel h
-		Tipo inteiro
-			Funcao testepar
-				Tipo void
-				Tipo inteiro
-					Variavel h
-			Tipo void
-				Funcao main
-					Tipo void
-					Tipo inteiro
-						Variavel x
-					Tipo inteiro
-						Variavel y
-					Atribuicao
-						Id: x
-						Constante: 100
-					Atribuicao
-						Id: y
-						Constante: 25
-					Chamada de Funcao output 
-						Chamada de Funcao gcd 
-							Id: x
-							Id: y
+Tipo: inteiro
+	Variavel: b global 1 1
+	Tipo: inteiro
+		Funcao: gcd
+			Tipo: inteiro
+				Parametro: u
+			Tipo: inteiro
+				Parametro: v
+			If
+				Operacao: Simbolo: ==
+					ID: v
+					Constante: 0
+				Return
+					ID: u
+				Return
+					Chamada de Funcao: gcd 
+						ID: v
+						Operacao: Simbolo: -
+							ID: u
+							Operacao: Simbolo: *
+								Operacao: Simbolo: /
+									ID: u
+									ID: v
+								ID: v
+		Tipo: void
+			Funcao: main
+				Tipo: inteiro
+					Variavel: x main 1 1
+				Tipo: inteiro
+					Variavel: y main 1 1
+				Tipo: vetor inteiro
+					Variavel: z main 2 10
+				Atribuicao
+					Vetor: z
+						Constante: 1
+					Constante: 10
+				Atribuicao
+					ID: x
+					Constante: 100
+				Atribuicao
+					ID: y
+					Constante: 25
+				Chamada de Funcao: output 
+					Chamada de Funcao: gcd 
+						ID: x
+						ID: y

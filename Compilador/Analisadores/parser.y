@@ -22,8 +22,8 @@
 %token IF INT RETURN VOID WHILE
 %left IGUAL DIF
 %left MEN MENE MAI MAIE
-%left SOM SUB
-%left MUL DIV
+%left SOM SUBT
+%left MULT DIVI
 %token ATRIB
 %token PVIR
 %token VIR
@@ -47,7 +47,7 @@ declaracao_lista: declaracao_lista declaracao
                         if(t!=NULL){
                             while(t->child[1] != NULL) 
                                 t = t->child[1];
-                            t = t->child[1] = $2;
+                            t->child[1] = $2;
                             $$ = $1;
                         }
                         else
@@ -76,6 +76,7 @@ var_declaracao: INT id PVIR
                         $2->nodekind = statementX;
                         $2->kind.stmt = variableX;
                         $2->type = integerX;
+                        $2->attr.len = 1; 
                     }
                 | VOID id PVIR
                     {
@@ -92,11 +93,11 @@ var_declaracao: INT id PVIR
                     {
                         $$ = newExpNode(typeX);
                         $$->type = integerX; 
-                        $$->attr.name = "inteiro";
+                        $$->attr.name = "vetor inteiro";
                         $$->child[0] = $2;
                         $2->nodekind = statementX;
                         $2->kind.stmt = variableX;
-                        $2->type = integerX;
+                        $2->type = arrayX;
                         $2->attr.len = $4->attr.val;
                     }
                 | VOID id ACOL num FCOL PVIR
@@ -122,9 +123,8 @@ func_declaracao: INT id AP params FP composto_decl
                         $2->nodekind = statementX;
                         $2->kind.stmt = functionX;
 						$2->type = integerX;
-						$4->type = integerX;
-						aggScope($2->child[0], $2->attr.name);
-						aggScope($2->child[1], $2->attr.name);
+						defEscopo($2->child[0], $2->attr.name);
+						defEscopo($2->child[1], $2->attr.name);
                     }
 
                 | VOID id AP params FP composto_decl
@@ -137,8 +137,9 @@ func_declaracao: INT id AP params FP composto_decl
                         $2->child[1] = $6;
                         $2->nodekind = statementX;
                         $2->kind.stmt = functionX;
-						aggScope($2->child[0], $2->attr.name);
-						aggScope($2->child[1], $2->attr.name);
+                        $2->type = voidX;
+						defEscopo($2->child[0], $2->attr.name);
+						defEscopo($2->child[1], $2->attr.name);
 					};
                     
 params: param_lista
@@ -147,8 +148,7 @@ params: param_lista
             }
         | VOID
             {
-                $$ = newExpNode(typeX);
-      		    $$->attr.name = "void";
+                $$ = $1;
             };
 
 param_lista: param_lista VIR param
@@ -174,7 +174,7 @@ param: INT id
         {
             $$ = newExpNode(typeX);
 			$2->nodekind = statementX;
-            $2->kind.stmt = variableX;
+            $2->kind.stmt = paramX;
             $$->type = integerX;
 			$2->type = integerX; 	
             $$->attr.name = "inteiro";
@@ -184,7 +184,7 @@ param: INT id
         {
             $$ = newExpNode(typeX);
 			$2->nodekind = statementX;
-            $2->kind.stmt = variableX;
+            $2->kind.stmt = paramX;
             $$->type = voidX;
 			$2->type = voidX; 	
             $$->attr.name = "void";
@@ -194,21 +194,21 @@ param: INT id
         {
             $$ = newExpNode(typeX);
 			$2->nodekind = statementX;
-            $2->kind.stmt = variableX;
-            $$->type = integerX;
-			$2->type = integerX;
-            $$->attr.name = "inteiro";
+            $2->kind.stmt = paramX;
+            $$->type = arrayX;
+			$2->type = arrayX;
+            $$->attr.name = "vetor inteiro";
             $$->child[0] = $2;
         }
     | VOID id ACOL FCOL
         {
             $$ = newExpNode(typeX);
 			$2->nodekind = statementX;
-            $2->kind.stmt = variableX;
-            $$->type = voidX;
-            $$->attr.name = "void";
+            $2->kind.stmt = paramX;
+            $$->type = arrayX;
+            $$->attr.name = "vetor void";
             $$->child[0] = $2;
-			$2->type = voidX; 
+			$2->type = arrayX; 
         };
             
 composto_decl: ACHA local_declaracoes statement_lista FCHA
@@ -335,13 +335,14 @@ expressao: var ATRIB expressao
 var: id
         {
             $$ = $1;
+            $$->type = integerX;
         }
     | id ACOL expressao FCOL
         {
             $$ = $1;
    		    $$->child[0] = $3;
-   		    $$->kind.exp = vectorX;
-   		    $$->type = integerX;
+            $$->kind.exp = vectorX;
+   		    $$->type = arrayX;
         };
 
 simples_expressao: soma_expressao relacional soma_expressao
@@ -408,10 +409,10 @@ soma: SOM
             $$ = newExpNode(operationX);
           	$$->attr.op = SOM;
         }
-    | SUB
+    | SUBT
         {
             $$ = newExpNode(operationX);
-          	$$->attr.op = SUB;
+          	$$->attr.op = SUBT;
         };
 
 termo: termo mult fator
@@ -425,15 +426,15 @@ termo: termo mult fator
             $$ = $1;
         };
 
-mult: MUL
+mult: MULT
         {
             $$ = newExpNode(operationX);
-          	$$->attr.op = MUL;
+          	$$->attr.op = MULT;
         }
-    | DIV
+    | DIVI
         {
             $$ = newExpNode(operationX);
-          	$$->attr.op = DIV;
+          	$$->attr.op = DIVI;
         };
 
 fator: AP expressao FP
@@ -503,18 +504,21 @@ num: NUM
 
 %%
 
-void yyerror(){ //escreve o erro no console
+void yyerror(){ // Escreve o erro no console
 	extern char* yytext;
 	printf("ERRO SINTATICO: %s LINHA: %d.\n", yytext, numlinha);
 	Error = TRUE;
 }
 
-TreeNode * parse(void){ //retorna a arvore criada
+TreeNode * parse(void){ // Retorna a arvore criada
 	yyparse();
+    FILE *f_out = fopen("outParser.output", "w+");
+    printTree(savedTree, f_out);
+    fclose(f_out);
 	return savedTree;
 }
 
-static int yylex(void){ //pega os tokens
+static int yylex(void){ // Pega os tokens
 	TokenType t = getToken();
 	return t;
 }

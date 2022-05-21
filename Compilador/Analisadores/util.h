@@ -17,6 +17,6 @@ char * copyString( char * );
 void printTree( TreeNode * , FILE *);
 
 // Seta os escopos das declaracoes
-void aggScope(TreeNode*, char*);
+void defEscopo(TreeNode*, char*);
 
 #endif

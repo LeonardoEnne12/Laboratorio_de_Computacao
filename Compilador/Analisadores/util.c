@@ -26,9 +26,9 @@ void printToken(TokenType token, const char* tokenString, FILE *listing)
     case PVIR: fprintf(listing,"Simbolo: ;\n"); break;
     case VIR: fprintf(listing,"Simbolo: ,\n"); break;
     case SOM: fprintf(listing,"Simbolo: +\n"); break;
-    case SUB: fprintf(listing,"Simbolo: -\n"); break;
-    case MUL: fprintf(listing,"Simbolo: *\n"); break;
-    case DIV: fprintf(listing,"Simbolo: /\n"); break;
+    case SUBT: fprintf(listing,"Simbolo: -\n"); break;
+    case MULT: fprintf(listing,"Simbolo: *\n"); break;
+    case DIVI: fprintf(listing,"Simbolo: /\n"); break;
     case ENDF: fprintf(listing,"Palavra Reservada: EOF\n"); break;
     case NUM:
       fprintf(listing, "Numero: %s\n",tokenString);
@@ -44,12 +44,12 @@ void printToken(TokenType token, const char* tokenString, FILE *listing)
   }
 }
 
-void aggScope(TreeNode* t, char* scope){ // Set dos escopos
+void defEscopo(TreeNode* t, char* scope){ // Set dos escopos
 	int i;
 	while(t != NULL){
 		for(i = 0; i < MAXCHILDREN; ++i){
 			t->attr.scope = scope;
-			aggScope(t->child[i], scope);
+			defEscopo(t->child[i], scope);
 		}
 		t = t->sibling; 
 	}
@@ -138,17 +138,20 @@ void printTree(TreeNode * tree, FILE * f_out){ // Print da arvore gerada (recurs
 				fprintf(f_out,"While\n");
 				break;
 				case variableX:
-				fprintf(f_out,"Variavel %s\n", tree->attr.name);
+				fprintf(f_out,"Variavel: %s %s %d %d\n", tree->attr.name,tree->attr.scope,tree->type, tree->attr.len);
 				break;
 				case functionX:
-				fprintf(f_out,"Funcao %s\n", tree->attr.name);
+				fprintf(f_out,"Funcao: %s\n", tree->attr.name);
 				break;
 				case callX:
-				fprintf(f_out,"Chamada de Funcao %s \n", tree->attr.name);
+				fprintf(f_out,"Chamada de Funcao: %s \n", tree->attr.name);
 				break;        
 				case returnX:
 				fprintf(f_out, "Return\n");
-				break;        
+				break;
+				case paramX:
+				fprintf(f_out, "Parametro: %s\n", tree->attr.name);
+				break;     
 
 				default:
 				fprintf(f_out,"ExpNode kind desconhecido\n");
@@ -165,16 +168,13 @@ void printTree(TreeNode * tree, FILE * f_out){ // Print da arvore gerada (recurs
 				fprintf(f_out,"Constante: %d\n",tree->attr.val);
 				break;
 				case idX:
-				fprintf(f_out,"Id: %s\n",tree->attr.name);
+				fprintf(f_out,"ID: %s\n",tree->attr.name);
 				break;
 				case vectorX:
 				fprintf(f_out,"Vetor: %s\n",tree->attr.name);
 				break;
-				case vectorIdX:
-				fprintf(f_out,"Index [%d]\n",tree->attr.val);
-				break;
 				case typeX:
-				fprintf(f_out,"Tipo %s\n",tree->attr.name);
+				fprintf(f_out,"Tipo: %s\n",tree->attr.name);
 				break;
 
 				default:

@@ -1,9 +1,6 @@
 #ifndef _PARSE_H_
 #define _PARSE_H_
 
-/* Function parse returns the newly 
- * constructed syntax tree
- */
-TreeNode * parse(void);
+TreeNode * parse(void); // Definicao da funcao que retorna a arvore criada
 
 #endif
