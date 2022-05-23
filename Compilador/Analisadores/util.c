@@ -150,7 +150,7 @@ void printTree(TreeNode * tree, FILE * f_out){ // Print da arvore gerada (recurs
 				fprintf(f_out, "Return\n");
 				break;
 				case paramX:
-				fprintf(f_out, "Parametro: %s\n", tree->attr.name);
+				fprintf(f_out, "Parametro: %s %s %d\n", tree->attr.name,tree->attr.scope,tree->type);
 				break;     
 
 				default:

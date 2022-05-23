@@ -151,11 +151,19 @@ def genStatement(tree):
         arg3 = "-";
         quadList.append("GOTO",arg1,arg2,arg3)
 
-    elif name == 'Variavel:':
-        #arg1 = tree.parent.parent.name.split()[0]
+    elif name == 'Variavel:': #Rever essa parte 
         arg1 = tree.name.split()[1]
-        if '[' in tree.name.split()[1]:
-            arg3 = tree.name.split('[')[1]
+        arg2 = tree.name.split()[2]
+        if tree.name.split()[3] == 2:
+            arg3 = tree.name.split()[4]
+            quadList.append("ALLOC",arg1,arg2,arg3)
+            if arg2 == "global": 
+                globalSize = tree.name.split()[4]
+        else:
+            arg3 = "-"
+            quadList.append("ALLOC",arg1,arg2,arg3)
+            if arg2 == "global":
+                globalSize = 1
 
     elif name == 'Funcao:':
         if (tree.parent.name.split()[1] == 'inteiro'):
@@ -189,12 +197,20 @@ def genStatement(tree):
     elif name == 'Return':
         if(len(tree.children) > 0):
             cGen(tree.children[0])
-
-        arg1 = ""
+        arg1 = tempAux
         arg2 = '-'
         arg3 = '-'
         quadList.append("RET",arg1,arg2,arg3)
-    #paramX n tem
+    
+    elif name == 'Parametro:':
+        if tree.name.split()[3] == 1:
+            arg1 = "int"
+        else:
+            arg1 = "int[]"
+        arg2 = tree.name.split()[1]
+        arg3 = tree.name.split()[2]
+        quadList.append("ARG",arg1,arg2,arg3)
+
 
 
 def genExpression(tree):
@@ -229,22 +245,22 @@ def genExpression(tree):
         elif tree.name.split()[-1] == '/':
             quadList.append("DIV",arg1,arg2,arg3)
         
-        elif tree.name.split()[-1] == ' ': #N sei
+        elif tree.name.split()[-1] == '<': 
             quadList.append("LT",arg1,arg2,arg3)
         
-        elif tree.name.split()[-1] == ' ': #N sei
+        elif tree.name.split()[-1] == '<=': 
             quadList.append("LET",arg1,arg2,arg3)
         
-        elif tree.name.split()[-1] == ' ': #N sei
+        elif tree.name.split()[-1] == '>': 
             quadList.append("GT",arg1,arg2,arg3)
         
-        elif tree.name.split()[-1] == ' ': #N sei
+        elif tree.name.split()[-1] == '>=':
             quadList.append("GET",arg1,arg2,arg3)
         
-        elif tree.name.split()[-1] == '==': #N sei
+        elif tree.name.split()[-1] == '==':
             quadList.append("EQ",arg1,arg2,arg3)
         
-        elif tree.name.split()[-1] == '!=': #N sei
+        elif tree.name.split()[-1] == '!=': 
             quadList.append("NEQ",arg1,arg2,arg3)
         
 
@@ -252,7 +268,7 @@ def genExpression(tree):
         tempAux = f"$t{temp}"
         newTemp()
         arg1 = tempAux
-        arg2 = "" #N sei
+        arg2 = tree.name.split()[1]
         arg3 = "-"
         quadList.append("LOAD",arg1,arg2,arg3)
     
@@ -260,7 +276,7 @@ def genExpression(tree):
         tempAux = f"$t{temp}"
         newTemp()
         arg1 = tempAux
-        arg2 = name # N sei
+        arg2 = tree.name.split()[1]
         arg3 = "-"
         quadList.append("LOAD",arg1,arg2,arg3)
 
@@ -276,7 +292,7 @@ def genExpression(tree):
         tempAux = f"$t{temp}"
         newTemp()
         arg1 = tempAux
-        arg2 = name #N sei
+        arg2 = tree.name.split()[1]
         quadList.append("LOAD",arg1,arg2,arg3)
 
     elif name == 'Tipo':
@@ -284,8 +300,6 @@ def genExpression(tree):
             cGen(tree.children[0])
     
     
-    
-
 def cGen(tree):
 
     if (tree != None):
@@ -305,12 +319,9 @@ def cGen(tree):
             cGen(tree.children[1])
 
 
-
-            
-
-
-
 cGen(root)
+
+print(quadList)
 
 #last function to work        
 def quadList(tree):

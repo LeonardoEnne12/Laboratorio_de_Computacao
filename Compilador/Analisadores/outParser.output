@@ -3,9 +3,9 @@ Tipo: inteiro
 	Tipo: inteiro
 		Funcao: gcd
 			Tipo: inteiro
-				Parametro: u
+				Parametro: u gcd 1
 			Tipo: inteiro
-				Parametro: v
+				Parametro: v gcd 1
 			If
 				Operacao: Simbolo: ==
 					ID: v
